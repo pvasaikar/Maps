@@ -1,5 +1,6 @@
 package com.example.user.maps;
 
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -93,6 +94,8 @@ public class MapsActivity extends AppCompatActivity
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        removeShiftMode(navigation);
 
         //Navigation Drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -244,6 +247,28 @@ public class MapsActivity extends AppCompatActivity
         return true;
     }
 
+            @SuppressLint("RestrictedApi")
+            public static void removeShiftMode(BottomNavigationView view) {
+                BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+                try {
+                    Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+                    shiftingMode.setAccessible(true);
+                    shiftingMode.setBoolean(menuView, false);
+                    shiftingMode.setAccessible(false);
+                    for (int i = 0; i < menuView.getChildCount(); i++) {
+                        BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                        //noinspection RestrictedApi
+                        item.setShiftingMode(false);
+                        // set once again checked value, so view will be updated
+                        //noinspection RestrictedApi
+                        item.setChecked(item.getItemData().isChecked());
+                    }
+                } catch (NoSuchFieldException e) {
+                    //Log.e("BottomNav", "Unable to get shift mode field", e);
+                } catch (IllegalAccessException e) {
+                    //Log.e("BottomNav", "Unable to change value of shift mode", e);
+                }
+            }
 
 
 }
