@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_banana"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_banana"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/navigation_grapes"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_grapes"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/navigation_pumpkin"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_pumpkin"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/navigation_carrot"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_carrot"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/navigation_rassberry"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_Rasberry"
+        app:showAsAction="withText" />
+
+
+</menu>
