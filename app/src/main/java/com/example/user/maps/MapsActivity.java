@@ -1,6 +1,7 @@
 package com.example.user.maps;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -19,12 +20,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.lang.reflect.Field;
 
@@ -36,6 +42,7 @@ public class MapsActivity extends AppCompatActivity
     private GoogleMap mMap;
     boolean mLocationPermissionGranted;
     final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 123;
+    GoogleSignInClient mGoogleSignInClient;
 
     //private TextView mTextMessage;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -236,9 +243,29 @@ public class MapsActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_profile) {
+            Intent intent = new Intent(MapsActivity.this,
+                    ProfileActivity.class);
+            startActivity(intent); // startActivity allow you to move
 
         }
         else if (id == R.id.nav_logout) {
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+
+            mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
+            //mGoogleSignInClient= (GoogleSignInClient) getIntent().getExtras().get("account");
+            mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    Intent intent = new Intent(MapsActivity.this,
+                            SignInActivity.class);
+                    startActivity(intent); // startActivity allow you to move
+                    finish();
+                }
+            });
 
         }
 
