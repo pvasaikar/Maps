@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "808438698323",
+    "firebase_url": "https://able-brace-200914.firebaseio.com",
+    "project_id": "able-brace-200914",
+    "storage_bucket": "able-brace-200914.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808438698323:android:7ecf1abad4d4e0ea",
+        "android_client_info": {
+          "package_name": "com.example.user.maps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808438698323-18vngqsqv3o1pr7h0vuo1440afhvl44r.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "808438698323-a869scbfkh1acgtr378oj66qhelo1pnr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.maps",
+            "certificate_hash": "865826c739a933f8369e14f7c139b458348d616d"
+          }
+        },
+        {
+          "client_id": "808438698323-u9q9dfn8d5jsf6b7clq0sof269u57214.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKhxkmnZajgSZZES9Ii377GO5irc--h0Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808438698323-18vngqsqv3o1pr7h0vuo1440afhvl44r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
