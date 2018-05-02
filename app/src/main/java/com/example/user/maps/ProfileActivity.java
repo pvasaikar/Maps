@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -36,11 +38,20 @@ public class ProfileActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         //GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getExtras().get("account");
 
-        useremail.setText(account.getEmail());
-        username.setText(account.getDisplayName());
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        useremail.setText(currentUser.getEmail());
+        username.setText(currentUser.getDisplayName());
+
+        //useremail.setText(account.getEmail());
+        //username.setText(account.getDisplayName());
+
+        /*Picasso.with(this)
+                .load(account.getPhotoUrl())
+                .into(userphoto); */
 
         Picasso.with(this)
-                .load(account.getPhotoUrl())
+                .load(currentUser.getPhotoUrl())
                 .into(userphoto);
 
     }

@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.reflect.Field;
 
@@ -250,22 +251,29 @@ public class MapsActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_logout) {
 
+
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestEmail()
                     .build();
 
             mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-            //mGoogleSignInClient= (GoogleSignInClient) getIntent().getExtras().get("account");
-            mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
 
-                    Intent intent = new Intent(MapsActivity.this,
-                            SignInActivity.class);
-                    startActivity(intent); // startActivity allow you to move
-                    finish();
-                }
-            });
+            if (mGoogleSignInClient!=null)
+            {
+                mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Intent intent = new Intent(MapsActivity.this,
+                                SignInActivity.class);
+                        startActivity(intent); // startActivity allow you to move
+                        finish();
+                    }
+                });
+            }
+            //mGoogleSignInClient= (GoogleSignInClient) getIntent().getExtras().get("account");
+
+            FirebaseAuth.getInstance().signOut();
 
         }
 
