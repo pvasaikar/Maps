@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         useremail=(TextView) findViewById(R.id.userEmail);
         userphoto=(ImageView)findViewById(R.id.userPhoto);
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         //GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getExtras().get("account");
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();

@@ -23,31 +23,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/signIn"
+            android:layout_alignEnd="@+id/signIn"
             android:layout_alignRight="@id/signIn"
             android:layout_marginTop="8dp"
             android:text="@string/with"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true"/>
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/with"
-            android:layout_marginTop="14dp" />
-
-        <com.facebook.login.widget.LoginButton
-            xmlns:facebook="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/with"
             android:layout_marginTop="14dp"
-            android:layout_toRightOf="@id/sign_in_button"
-            facebook:confirm_logout="false"
-            facebook:fetch_user_info="true"
-            android:text="testing 123"
-            facebook:login_text="LOGIN"
-            facebook:logout_text="LOGOUT"/>
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/or"

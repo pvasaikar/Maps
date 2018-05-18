@@ -251,7 +251,10 @@ public class MapsActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_logout) {
 
+            //Firebase SignOut
+            FirebaseAuth.getInstance().signOut();
 
+            //Google SignOut
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestEmail()
                     .build();
@@ -272,8 +275,6 @@ public class MapsActivity extends AppCompatActivity
                 });
             }
             //mGoogleSignInClient= (GoogleSignInClient) getIntent().getExtras().get("account");
-
-            FirebaseAuth.getInstance().signOut();
 
         }
 
